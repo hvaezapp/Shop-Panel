@@ -1,6 +1,6 @@
 ﻿@model Category
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
 @{
     ViewData["Title"] = "ویرایش دسته بندی";
@@ -31,8 +31,8 @@
         <form asp-area="AdminPanel" asp-controller="Category" asp-action="Edit" method="post">
 
             @Html.HiddenFor(a => a.Id)
-            @Html.HiddenFor(a => a.datemiladi)
-            @Html.HiddenFor(a => a.dateshamsi)
+            @Html.HiddenFor(a => a.dateMiladi)
+            @Html.HiddenFor(a => a.dateShamsi)
             @Html.HiddenFor(a => a.image)
 
 

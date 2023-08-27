@@ -1,15 +1,16 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.ExtraClass;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.ExtraClass;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class ShopRepository : IShop
     {
@@ -106,7 +107,6 @@ namespace newsSite90tv.Models.Repository
                             dateMiladi = DateTime.Now,
                             dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                             shop_id = id,
-                            time = DateAndTimeShamsi.MyTime(),
                             usertoken = token,
                             userapp_id = user.Id
 
@@ -235,7 +235,7 @@ namespace newsSite90tv.Models.Repository
                 api.message = EndPointMessage.API_ERROR_MSG;
             }
 
-            return api;
+            return await Task.FromResult(api);
         }
 
 
@@ -271,7 +271,7 @@ namespace newsSite90tv.Models.Repository
             }
 
 
-            return api;
+            return await Task.FromResult(api);
         }
 
 
@@ -349,7 +349,7 @@ namespace newsSite90tv.Models.Repository
                 api.status = EndPointMessage.API_ERROR_Std;
             }
 
-            return api;
+            return await Task.FromResult(api);
         }
 
         public async Task<ShopListApiObject> searchshopbytitle(string serach, int page)
@@ -383,7 +383,7 @@ namespace newsSite90tv.Models.Repository
                 api.status = EndPointMessage.API_ERROR_Std;
             }
 
-            return api;
+            return await Task.FromResult(api);
         }
 
 
@@ -418,7 +418,7 @@ namespace newsSite90tv.Models.Repository
             }
 
 
-            return model;
+            return await Task.FromResult(model);
 
         }
 
@@ -448,7 +448,7 @@ namespace newsSite90tv.Models.Repository
                 api.status = EndPointMessage.API_ERROR_Std;
             }
 
-            return api;
+            return await Task.FromResult(api);
         }
 
 
@@ -720,7 +720,7 @@ namespace newsSite90tv.Models.Repository
                 api.status = EndPointMessage.API_ERROR_Std;
             }
 
-            return api;
+            return await Task.FromResult(api);
         }
     }
 }

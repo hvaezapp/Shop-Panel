@@ -1,9 +1,11 @@
-﻿using newsSite90tv.Models.Repository;
-using newsSite90tv.Services;
+﻿using ShopPanel.Models.Repository;
+using ShopPanel.Services;
+using ShopPanel.Models.Context;
+using ShopPanel.Models.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.UnitOfWork
+namespace ShopPanel.Models.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {

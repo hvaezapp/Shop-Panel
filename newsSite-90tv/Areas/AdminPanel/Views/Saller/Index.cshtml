@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Salsman>
 
-@using newsSite90tv.PublicClass
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.PublicClass
+@using ShopPanel.Models.UnitOfWork
 
 
 
@@ -115,14 +115,14 @@
 
                             @if (item.status == (byte)Status.suspend)
                             {
-                                <a class="btn btn-sm btn-success" asp-controller="Saller" asp-action="changeStatus"
-                                   asp-route-id="@item.Id" asp-route-state="1" data-toggle="modal" data-target="#modal-action-category">
+                                    <a class="btn btn-sm btn-success"  asp-controller="saller" asp-action="changeStatus"
+                                   asp-route-id="@item.Id" asp-route-state="1" >
                                     <i class="glyphicon glyphicon-check"></i>
                                     تایید
                                 </a>
 
-                                <a class="btn btn-sm btn-danger" asp-controller="Category" asp-action="changeStatus"
-                                   asp-route-id="@item.Id" asp-route-state="2" data-toggle="modal" data-target="#modal-action-category">
+                                    <a class="btn btn-sm btn-danger" asp-controller="saller" asp-action="changeStatus"
+                                   asp-route-id="@item.Id" asp-route-state="2" >
                                     <i class="glyphicon glyphicon-erase"></i>
                                     عدم تایید
                                 </a>

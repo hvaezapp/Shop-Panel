@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
 using Newtonsoft.Json;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     public class CategoryController : Controller
@@ -135,10 +136,6 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                 category.image =  string.IsNullOrEmpty(imagename) ? "nopicture.png" : imagename;
 
                 _context.CategoryRepositoryUW.Create(category);
-
-
-                category.datemiladi = DateTime.Now;
-                category.dateshamsi = DateAndTimeShamsi.DateTimeShamsi();
 
                 await _context.saveAsync();
 

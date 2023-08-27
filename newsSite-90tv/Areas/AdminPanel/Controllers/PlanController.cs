@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
 
     [Area("AdminPanel")]
@@ -42,7 +41,7 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
 
 
             var model = _context.planRepositoryUW.Get(a => a.isEnable).Skip(paresh).Take(10);
-            
+
             return View(model);
         }
 
@@ -55,7 +54,7 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
 
 
 
-        [HttpPost , ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Plan plan)
         {
             if (ModelState.IsValid)
@@ -63,8 +62,6 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                 try
                 {
                     plan.isEnable = true;
-                    plan.dateMiladi = DateTime.Now;
-                    plan.dateShamsi = DateAndTimeShamsi.DateTimeShamsi();
 
                     _context.planRepositoryUW.Create(plan);
                     await _context.saveAsync();
@@ -111,7 +108,7 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
             {
                 try
                 {
-                   
+
 
                     _context.planRepositoryUW.Update(plan);
                     await _context.saveAsync();
@@ -156,16 +153,16 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
 
             try
             {
-                
+
 
                 var plan = await _context.planRepositoryUW.GetByIdAsync(id);
 
                 plan.isEnable = false;
-                
+
                 _context.planRepositoryUW.Update(plan);
                 await _context.saveAsync();
 
-             
+
 
                 TempData["message"] = EndPointMessage.DELETE_MSG;
                 TempData["type"] = EndPointMessage.DELETE_TYPE;

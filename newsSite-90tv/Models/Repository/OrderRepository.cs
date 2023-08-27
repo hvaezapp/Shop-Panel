@@ -1,14 +1,15 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class OrderRepository : Iorder
     {
@@ -39,11 +40,9 @@ namespace newsSite90tv.Models.Repository
 
                         appuser_id = user.Id,
                         isEnable = true,
-                        datemiladi = DateTime.Now,
-                        dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
                         codeorder = Guid.NewGuid().ToString().Replace("-", ""),
-                        finishdatemiladi = DateTime.Now,
-                        finishdateshamsi = "",
+                        finishdateMiladi = DateTime.Now,
+                        finishdateShamsi = "",
                         isfinish = false,
                         sumprice = 0,
                         postprice = 0,
@@ -229,14 +228,14 @@ namespace newsSite90tv.Models.Repository
 
                 if (user != null)
                 {
-                    api.orderhistory = _context.OrderRepositoryUW.Get(a => a.isEnable && a.appuser_id == user.Id ,a=>a.OrderByDescending(b=>b.datemiladi)).Select(a=>new OrderHistoryApiModel
+                    api.orderhistory = _context.OrderRepositoryUW.Get(a => a.isEnable && a.appuser_id == user.Id ,a=>a.OrderByDescending(b=>b.dateMiladi)).Select(a=>new OrderHistoryApiModel
                     {
                         codeorder = a.codeorder,
                         idorder = a.Id,
                         isfinish = a.isfinish,
                         totalprice = a.sumprice,
-                        createdate = a.dateshamsi + " " + DateAndTimeShamsi.MyTime(a.datemiladi),
-                        paydate = a.finishdateshamsi + " " +DateAndTimeShamsi.MyTime(a.finishdatemiladi)
+                        createdate = a.dateShamsi + " " + DateAndTimeShamsi.MyTime(a.dateMiladi),
+                        paydate = a.finishdateShamsi + " " +DateAndTimeShamsi.MyTime(a.finishdateMiladi)
 
                     });
 
@@ -297,7 +296,7 @@ namespace newsSite90tv.Models.Repository
             }
 
 
-            return api;
+            return await Task.FromResult(api);
         }
 
 

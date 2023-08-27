@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using newsSite90tv.Models;
-
+using ShopPanel.Models.Context;
 using System;
 using System.Collections.Generic;
 

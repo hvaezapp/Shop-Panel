@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.ViewModels;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.ViewModels;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     // [Authorize(Roles = "Advertise")]
@@ -96,10 +96,10 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                     adv.users_id = _usermanager.GetUserId(User);
                     adv.isenable = true;
 
-                    if (!string.IsNullOrEmpty(adv.fromdateshamsi) && !string.IsNullOrEmpty(adv.todateshamsi))
+                    if (!string.IsNullOrEmpty(adv.fromdateShamsi) && !string.IsNullOrEmpty(adv.todateShamsi))
                     {
-                        adv.fromdatemiladi = adv.fromdateshamsi.shamsitoMiladi();
-                        adv.todatemiladi = adv.todateshamsi.shamsitoMiladi();
+                        adv.fromdateMiladi = adv.fromdateShamsi.shamsitoMiladi();
+                        adv.todateMiladi = adv.todateShamsi.shamsitoMiladi();
                     }
 
 
@@ -167,8 +167,8 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                     }
 
 
-                    adv.fromdatemiladi = adv.fromdateshamsi.shamsitoMiladi();
-                    adv.todatemiladi = adv.todateshamsi.shamsitoMiladi();
+                    adv.fromdateMiladi = adv.fromdateShamsi.shamsitoMiladi();
+                    adv.todateMiladi = adv.todateShamsi.shamsitoMiladi();
 
 
                     _context.AdvertisRepositoryUW.Update(adv);

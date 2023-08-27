@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
 
-namespace newsSite90tv.Controllers.api
+namespace ShopPanel.Controllers.api
 {
     [Produces("application/json")]
 

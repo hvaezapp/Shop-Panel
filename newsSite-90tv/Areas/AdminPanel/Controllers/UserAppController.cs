@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     public class UserAppController : Controller
@@ -57,7 +57,7 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
             }
 
 
-            var model = _context.userappRepositoryUW.Get(a=>a.isEnable  , a=>a.OrderByDescending(b=>b.datemiladi)).Skip(paresh).Take(10);
+            var model = _context.userappRepositoryUW.Get(a=>a.isEnable  , a=>a.OrderByDescending(b=>b.dateMiladi)).Skip(paresh).Take(10);
 
             ViewBag.viewtitle = "کاربران   اپلیکیشن";
 
@@ -93,35 +93,40 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                     if (userphoneexist == null)
                     {
                         userApp.image = imagename;
-                        userApp.datemiladi = DateTime.Now;
-                        userApp.dateshamsi = DateAndTimeShamsi.DateTimeShamsi();
+                        userApp.dateMiladi = DateTime.Now;
+                        userApp.dateShamsi = DateAndTimeShamsi.DateTimeShamsi();
                         userApp.mobileActiveStatus = false;
                         userApp.token = "";
                         userApp.User_id = _userManager.GetUserId(User);
                         userApp.mobileActiveCode = "";
                         userApp.isEnable = true;
+                        userApp.type = usertype.generaluser.ToByte();
 
                         _context.userappRepositoryUW.Create(userApp);
                         await _context.saveAsync();
 
 
-                        if (userApp.type == 1) // seller type
+                        if (userApp.type == usertype.salsman.ToByte()) // seller type
                         {
                             Salsman salsman = new Salsman
                             {
                                 appuser_id = userApp.Id,
-                                dateMiladi = DateTime.Now,
-                                dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                                 isEnable = true,
-                                status = 1, // valid
+                                status = Status.suspend.ToByte(), // valid
                                 user_id = _userManager.GetUserId(User)
                             };
 
+                            userApp.type = usertype.generaluser.ToByte();
+                            _context.userappRepositoryUW.Update(userApp);
 
                             _context.salsmanRepositoryUW.Create(salsman);
                             await _context.saveAsync();
 
                         }
+
+
+
+           
 
 
                         ViewBag.message = EndPointMessage.SUCCESS_MSG;
@@ -281,7 +286,7 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
 
                 await _context.saveAsync();
 
-                _ideleteimage.DeleteImageHost(appuser.image, "upload\\userAppimage\\normalimage\\", "\\upload\\userAppimage\\thumbnailimage\\");
+                await _ideleteimage.DeleteImageHost(appuser.image, "upload\\userAppimage\\normalimage\\", "\\upload\\userAppimage\\thumbnailimage\\");
 
                 TempData["message"] = EndPointMessage.DELETE_MSG;
                 TempData["type"] = EndPointMessage.DELETE_TYPE;

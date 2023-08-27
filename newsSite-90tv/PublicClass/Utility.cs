@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace newsSite90tv.PublicClass
+namespace ShopPanel.PublicClass
 {
     //enums
 
@@ -31,10 +31,19 @@ namespace newsSite90tv.PublicClass
 
     public enum shopstate
     {
+ 
         contextfail,
         indeximagefails,
 
     }
+
+    public enum salsmanstate
+    {
+        waiting,
+        allow,
+        deny
+    }
+
 
 
     public enum ProductStatus
@@ -79,6 +88,16 @@ namespace newsSite90tv.PublicClass
         unread = 0,
         read = 1
     }
+
+
+    // contact us status
+    public enum usertype
+    {
+        salsman = 0,
+        generaluser = 1
+    }
+
+
 
     #endregion
 

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<newsSite90tv.Models.Category>
-@using newsSite90tv.PublicClass
+﻿@model IEnumerable<Category>
+@using ShopPanel.PublicClass
 
 @{
     ViewData["Title"] = "مدیریت دسته بندی ";
@@ -48,7 +48,7 @@
                         <td>ردیف</td>
                         <td>@Html.DisplayNameFor(model => model.Title)</td>
                         <td>@Html.DisplayNameFor(model => model.image)</td>
-                        <td>@Html.DisplayNameFor(model => model.dateshamsi)</td>
+                        <td>@Html.DisplayNameFor(model => model.dateShamsi)</td>
                         <td>عملیات</td>
                     </tr>
                 </thead>
@@ -70,7 +70,7 @@
                                 <img src="~/upload/category/thumbnailimage/@item.image" class="img-thumbnail" width="100px" height="100px" />
                             </td>
 
-                            <td>@item.dateshamsi</td>
+                            <td>@item.dateShamsi</td>
 
                             <td>
 

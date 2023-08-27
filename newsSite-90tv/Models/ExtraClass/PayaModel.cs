@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.ExtraClass
+namespace ShopPanel.Models.ExtraClass
 {
     public class PayaModel
     {

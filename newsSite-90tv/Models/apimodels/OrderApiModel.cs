@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.apimodels
+namespace ShopPanel.Models.ApiModels
 {
     public class OrderApiModel
     {

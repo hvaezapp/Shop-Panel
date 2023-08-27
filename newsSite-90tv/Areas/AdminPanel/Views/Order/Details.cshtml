@@ -1,9 +1,9 @@
 ﻿@model Order
 
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.Models.UnitOfWork
 
 
 @inject IUnitOfWork _context
@@ -165,8 +165,8 @@
 
 
         <p>
-            <label asp-for="dateshamsi"></label>
-            @Model.dateshamsi
+            <label asp-for="dateShamsi"></label>
+            @Model.dateShamsi
         </p>
 
         <p>
@@ -185,7 +185,7 @@
             @if (Model.isfinish)
             {
                 <label asp-for="isfinish"></label>
-                <text>@Model.finishdateshamsi</text>
+                <text>@Model.finishdateShamsi</text>
             }
         </p>
     }

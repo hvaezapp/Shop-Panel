@@ -1,14 +1,14 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class sellersellRepository : Isellersell
     {
@@ -34,11 +34,11 @@ namespace newsSite90tv.Models.Repository
 
                 if (user != null)
                 {
-                    api.selllist = _context.sellersellRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id && a.sellstate == state, a => a.OrderByDescending(b => b.createdateml), "Tbl_OrderDetail").Select(a => new apimodels.SellerSellListApiModel
+                    api.selllist = _context.sellersellRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id && a.sellstate == state, a => a.OrderByDescending(b => b.dateMiladi), "Tbl_OrderDetail").Select(a => new SellerSellListApiModel
                     {
                         idproduct = a.Tbl_OrderDetail.product_id,
                         idsell = a.Id,
-                        selldate = a.createdatesh + " " + DateAndTimeShamsi.MyTime(a.createdateml),
+                        selldate =(a.dateShamsi + "-" + DateAndTimeShamsi.MyTime(a.dateMiladi)),
                         sellstatus = a.sellstate,
                         productimage = _context.productRepositoryUW.GetById(a.Tbl_OrderDetail.product_id).image,
                         productname = _context.productRepositoryUW.GetById(a.Tbl_OrderDetail.product_id).title,

@@ -1,15 +1,15 @@
-﻿using newsSite90tv.Controllers.api;
-using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Controllers.api;
+using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static newsSite90tv.Models.Repository.ProductRepository;
+using static ShopPanel.Models.Repository.ProductRepository;
 
-namespace newsSite90tv.Models.Services
+namespace ShopPanel.Models.Services
 {
     public interface IProduct 
     {

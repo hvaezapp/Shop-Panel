@@ -1,14 +1,15 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class AthencateRepository : IAthenticate
     {
@@ -116,8 +117,8 @@ namespace newsSite90tv.Models.Repository
                         gender = 1, // defualt male
                         image = "defaultuserImage.png",
 
-                        datemiladi = DateTime.Now,
-                        dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                        dateMiladi = DateTime.Now,
+                        dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                     };
 
 
@@ -355,8 +356,8 @@ namespace newsSite90tv.Models.Repository
                             image = "defaultuserImage.png",
                             mobileActiveStatus = false,
                             type = 0,
-                            datemiladi = DateTime.Now,
-                            dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                            dateMiladi = DateTime.Now,
+                            dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                             mobileActiveCode = code,
                             isEnable = true,
                             gender = 1,

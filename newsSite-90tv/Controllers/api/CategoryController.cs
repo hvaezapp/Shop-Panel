@@ -4,17 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
+using ShopPanel.Models;
 
-using newsSite90tv.PublicClass;
+using ShopPanel.PublicClass;
 
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.Services;
-using static newsSite90tv.Models.Repository.CategoryRepository;
-using newsSite90tv.Models.apiobject;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.Services;
+using static ShopPanel.Models.Repository.CategoryRepository;
+using ShopPanel.Models.ApiObject;
 
-namespace newsSite90tv.Controllers.api
+namespace ShopPanel.Controllers.api
 {
     [Produces("application/json")]
 

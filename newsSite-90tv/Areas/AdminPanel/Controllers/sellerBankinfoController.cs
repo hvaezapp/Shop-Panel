@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.ViewModels;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.ViewModels;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
 
     [Area("AdminPanel")]

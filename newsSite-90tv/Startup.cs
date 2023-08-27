@@ -8,13 +8,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Repository;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Services;
+using ShopPanel.Models.Repository;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Services;
+using ShopPanel.Models.Context;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv
+namespace ShopPanel
 {
     public class Startup
     {
@@ -43,7 +44,9 @@ namespace newsSite90tv
                 .AddDefaultTokenProviders();
 
 
-            
+
+            #region Ioc
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAspNetUserRoleRepository, AspNetUserRoleRepository>();
             services.AddScoped<IUploadfile, UploadFile>();
@@ -51,17 +54,12 @@ namespace newsSite90tv
             services.AddScoped<IProduct, ProductRepository>();
             services.AddScoped<ICategory, CategoryRepository>();
             services.AddScoped<IAthenticate, AthencateRepository>();
-
             services.AddScoped<IsaveImage, saveImageRepository>();
             services.AddScoped<Icomment, commnetRepository>();
-
-
             services.AddScoped<IAdvertise, AdvertiseRepository>();
             services.AddScoped<IShop, ShopRepository>();
-          
             services.AddScoped<Iuseraddress, userAddressRepository>();
             services.AddScoped<IUserapp, userappRepository>();
-          
             services.AddScoped<Isend, sendRepository>();
             services.AddScoped<Iseller, sellerRepository>();
             services.AddScoped<Ibanner, bannerRepository>();
@@ -74,9 +72,9 @@ namespace newsSite90tv
             services.AddScoped<Ifav, favRepository>();
             services.AddScoped<ISellerbank, sellerbankRepository>();
             services.AddScoped<Icontact, ContactRepository>();
-
             services.AddScoped<IProperties, PropertiesRepository>();
 
+            #endregion
 
 
 
@@ -87,6 +85,7 @@ namespace newsSite90tv
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

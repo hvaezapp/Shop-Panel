@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using newsSite90tv.Models;
+using ShopPanel.Models.Context;
 using System;
 
-namespace newsSite90tv.Migrations
+namespace ShopPanel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -104,7 +104,39 @@ namespace newsSite90tv.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ApplicationRoles", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.AdvertisePlanState", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("adv_id");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<DateTime>("expiredateml");
+
+                    b.Property<string>("expiredatesh");
+
+                    b.Property<int>("plan_id");
+
+                    b.Property<DateTime>("startdateml");
+
+                    b.Property<string>("startdatesh");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("adv_id");
+
+                    b.HasIndex("plan_id");
+
+                    b.ToTable("Tbl_AdvertisePlanState");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ApplicationRoles", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -132,7 +164,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ApplicationUsers", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ApplicationUsers", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -195,12 +227,16 @@ namespace newsSite90tv.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Appsetting", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Appsetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("about");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<string>("email");
 
@@ -209,6 +245,8 @@ namespace newsSite90tv.Migrations
                     b.Property<string>("phone");
 
                     b.Property<string>("shabacode");
+
+                    b.Property<byte>("status");
 
                     b.Property<string>("user_id");
 
@@ -221,7 +259,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Appsetting");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Appversion", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Appversion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -247,14 +285,20 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Appversion");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.bannerImage", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.bannerImage", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("banner_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<string>("image");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -263,7 +307,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_BannerImage");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Buy", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Buy", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -276,9 +320,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("color_id");
 
-                    b.Property<DateTime>("createdateml");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("createdatesh");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isenable");
 
@@ -293,6 +337,8 @@ namespace newsSite90tv.Migrations
                     b.Property<long>("shop_id");
 
                     b.Property<int>("size_id");
+
+                    b.Property<byte>("status");
 
                     b.Property<int>("totalprice");
 
@@ -309,7 +355,31 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Buy");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Category", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Buycheck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("buy_id");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<string>("desc");
+
+                    b.Property<bool>("isenable");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("buy_id");
+
+                    b.ToTable("Tbl_BuyCheck");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -318,13 +388,15 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<string>("image");
 
                     b.Property<bool>("isenable");
+
+                    b.Property<byte>("status");
 
                     b.Property<byte>("type");
 
@@ -333,7 +405,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Category");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Checkout", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Checkout", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -342,13 +414,15 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("checkoutprice");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<long>("seller_id");
 
                     b.Property<long>("shop_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -361,7 +435,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Checkout");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.CheckoutRequest", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.CheckoutRequest", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -391,12 +465,18 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_CheckoutRequest");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.City", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<int>("ostan_id");
+
+                    b.Property<byte>("status");
 
                     b.Property<string>("title");
 
@@ -407,12 +487,16 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_City");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Color", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Color", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("code");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isenable");
 
@@ -420,12 +504,14 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("nameen");
 
+                    b.Property<byte>("status");
+
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Color");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Comment", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -455,7 +541,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_comment");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ContactUs", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ContactUs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -481,7 +567,25 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Contact");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.FollowShop", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.FileManager", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<string>("path");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_filemanager");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.FollowShop", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -494,7 +598,7 @@ namespace newsSite90tv.Migrations
 
                     b.Property<long>("shop_id");
 
-                    b.Property<string>("time");
+                    b.Property<byte>("status");
 
                     b.Property<long>("userapp_id");
 
@@ -509,7 +613,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_FollowShop");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Order", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Order", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -518,13 +622,13 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("codeorder");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
-                    b.Property<DateTime>("finishdatemiladi");
+                    b.Property<DateTime>("finishdateMiladi");
 
-                    b.Property<string>("finishdateshamsi");
+                    b.Property<string>("finishdateShamsi");
 
                     b.Property<bool>("isEnable");
 
@@ -533,6 +637,8 @@ namespace newsSite90tv.Migrations
                     b.Property<int>("postprice");
 
                     b.Property<byte>("posttype");
+
+                    b.Property<byte>("status");
 
                     b.Property<int>("sumprice");
 
@@ -545,12 +651,16 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Order");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.orderDetail", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.orderDetail", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("color_id");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isenable");
 
@@ -566,6 +676,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("size_id");
 
+                    b.Property<byte>("status");
+
                     b.Property<int>("totalprice");
 
                     b.HasKey("Id");
@@ -579,10 +691,16 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_orderdetail");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Ostan", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Ostan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<byte>("status");
 
                     b.Property<string>("title");
 
@@ -591,9 +709,29 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Ostans");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.payment", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Part", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<bool>("isenable");
+
+                    b.Property<string>("key");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tbl_PropertyPart");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.payment", b =>
+                {
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("amount");
@@ -602,9 +740,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("comment");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isSuccess");
 
@@ -614,6 +752,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("refid");
 
+                    b.Property<byte>("status");
+
                     b.HasKey("Id");
 
                     b.HasIndex("appuser_id");
@@ -621,7 +761,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_payment");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Plan", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Plan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -646,6 +786,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("price");
 
+                    b.Property<byte>("status");
+
                     b.Property<byte>("type");
 
                     b.HasKey("Id");
@@ -653,7 +795,33 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Plan");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Product", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProdProp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<long>("product_id");
+
+                    b.Property<int>("property_id");
+
+                    b.Property<byte>("status");
+
+                    b.Property<string>("value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("product_id");
+
+                    b.HasIndex("property_id");
+
+                    b.ToTable("Tbl_ProductProperty");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -721,10 +889,14 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Products");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductBrand", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductBrand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isenable");
 
@@ -732,19 +904,27 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("nameen");
 
+                    b.Property<byte>("status");
+
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Brand");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductColor", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductColor", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("color_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<long>("product_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -755,28 +935,40 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ProductColor");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductFav", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductFav", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("appuser_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<long>("product_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
                     b.ToTable("Tbl_Favorite");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductGallary", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductGallary", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<string>("imagepath");
 
                     b.Property<long>("product_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -785,10 +977,14 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ProductGallary");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductProperties", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductProperties", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<long>("product_id");
 
@@ -796,7 +992,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("propertiesvalue_id");
 
-                    b.HasKey("id");
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("product_id");
 
@@ -807,14 +1005,62 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ProductProperties");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductSize", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductSeller", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<bool>("isEnable");
+
+                    b.Property<bool>("isExist");
+
+                    b.Property<bool>("ismainseller");
+
+                    b.Property<byte>("offpercent");
+
+                    b.Property<long>("price");
+
+                    b.Property<byte>("productType");
+
+                    b.Property<long>("product_id");
+
+                    b.Property<byte>("qty");
+
+                    b.Property<long>("seller_id");
+
+                    b.Property<long>("shop_id");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("product_id");
+
+                    b.HasIndex("seller_id");
+
+                    b.HasIndex("shop_id");
+
+                    b.ToTable("Tbl_ProductSeller");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductSize", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<long>("product_id");
 
                     b.Property<int>("size_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -825,16 +1071,22 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ProductSize");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Properties", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Properties", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("category_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<bool>("isEnable");
 
                     b.Property<string>("name");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -843,14 +1095,20 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Properties");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.PropertiesValue", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.PropertiesValue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<bool>("isEnable");
 
                     b.Property<int>("properties_id");
+
+                    b.Property<byte>("status");
 
                     b.Property<string>("value");
 
@@ -861,7 +1119,35 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_PropertiesValue");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ReportProduct", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Property", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("cat_id");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<bool>("isenable");
+
+                    b.Property<string>("name");
+
+                    b.Property<int>("part_id");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("cat_id");
+
+                    b.HasIndex("part_id");
+
+                    b.ToTable("Tbl_Property");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ReportProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -893,12 +1179,18 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ReportProduct");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ReportReason", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ReportReason", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<bool>("isenable");
+
+                    b.Property<byte>("status");
 
                     b.Property<string>("title");
 
@@ -907,7 +1199,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ReportReason");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Salsman", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Salsman", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -933,16 +1225,16 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Salsman");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Sell", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Sell", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("buy_id");
 
-                    b.Property<DateTime>("createdateml");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("createdatesh");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isenable");
 
@@ -959,6 +1251,8 @@ namespace newsSite90tv.Migrations
                     b.Property<byte>("sellstatus");
 
                     b.Property<long>("shop_id");
+
+                    b.Property<byte>("status");
 
                     b.Property<long>("totalprice");
 
@@ -977,7 +1271,31 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Sell");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.sellerBank", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Sellcheck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<string>("desc");
+
+                    b.Property<bool>("isenable");
+
+                    b.Property<long>("sell_id");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("sell_id");
+
+                    b.ToTable("Tbl_SellCheck");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.sellerBank", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -1011,7 +1329,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_sellerBank");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Shop", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Shop", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -1063,7 +1381,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Shop");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.shopadvertise", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.shopadvertise", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -1074,9 +1392,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("dateShamsi");
 
-                    b.Property<DateTime>("fromdatemiladi");
+                    b.Property<DateTime>("fromdateMiladi");
 
-                    b.Property<string>("fromdateshamsi");
+                    b.Property<string>("fromdateShamsi");
 
                     b.Property<string>("image");
 
@@ -1086,9 +1404,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<byte>("status");
 
-                    b.Property<DateTime>("todatemiladi");
+                    b.Property<DateTime>("todateMiladi");
 
-                    b.Property<string>("todateshamsi");
+                    b.Property<string>("todateShamsi");
 
                     b.Property<string>("users_id");
 
@@ -1101,10 +1419,44 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ShopAdvertise");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ShopPlanState", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.shopcomments", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsEnable");
+
+                    b.Property<long>("appuser_id");
+
+                    b.Property<string>("body");
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
+                    b.Property<int>("replyto");
+
+                    b.Property<long>("shop_id");
+
+                    b.Property<byte>("status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("appuser_id");
+
+                    b.HasIndex("shop_id");
+
+                    b.ToTable("Tbl_ShopComment");
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ShopPlanState", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
 
                     b.Property<DateTime>("expiredateml");
 
@@ -1118,6 +1470,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("startdatesh");
 
+                    b.Property<byte>("status");
+
                     b.HasKey("Id");
 
                     b.HasIndex("plan_id");
@@ -1127,16 +1481,22 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_ShopPlanState");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Size", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Size", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int?>("cat_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<bool>("isEnable");
 
                     b.Property<string>("name");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -1145,14 +1505,20 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Size");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.SizeCategory", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.SizeCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("cat_id");
 
+                    b.Property<DateTime>("dateMiladi");
+
+                    b.Property<string>("dateShamsi");
+
                     b.Property<int>("size_id");
+
+                    b.Property<byte>("status");
 
                     b.HasKey("Id");
 
@@ -1163,7 +1529,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_SizeCategory");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserAddress", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserAddress", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -1174,9 +1540,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<int>("city_id");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<bool>("isActive");
 
@@ -1196,6 +1562,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("postalcode");
 
+                    b.Property<byte>("status");
+
                     b.HasKey("Id");
 
                     b.HasIndex("appuser_id");
@@ -1207,9 +1575,9 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_Useraddress");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserAlarm", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserAlarm", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<long>("appuser_id");
@@ -1233,7 +1601,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_UserAlarm");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserApp", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserApp", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -1242,9 +1610,9 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("birthdate");
 
-                    b.Property<DateTime>("datemiladi");
+                    b.Property<DateTime>("dateMiladi");
 
-                    b.Property<string>("dateshamsi");
+                    b.Property<string>("dateShamsi");
 
                     b.Property<string>("email");
 
@@ -1268,6 +1636,8 @@ namespace newsSite90tv.Migrations
 
                     b.Property<string>("phone");
 
+                    b.Property<byte>("status");
+
                     b.Property<string>("token");
 
                     b.Property<byte>("type");
@@ -1279,7 +1649,7 @@ namespace newsSite90tv.Migrations
                     b.ToTable("Tbl_UserApp");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.workerBanner", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.workerBanner", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -1325,7 +1695,7 @@ namespace newsSite90tv.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationRoles")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationRoles")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1333,7 +1703,7 @@ namespace newsSite90tv.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1341,7 +1711,7 @@ namespace newsSite90tv.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1349,12 +1719,12 @@ namespace newsSite90tv.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationRoles")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationRoles")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1362,445 +1732,531 @@ namespace newsSite90tv.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Appsetting", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.AdvertisePlanState", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "user")
+                    b.HasOne("ShopPanel.Models.Domain.shopadvertise", "Tbl_Shopadv")
+                        .WithMany()
+                        .HasForeignKey("adv_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Plan", "Tbl_Plan")
+                        .WithMany()
+                        .HasForeignKey("plan_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Appsetting", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "user")
                         .WithMany()
                         .HasForeignKey("user_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.bannerImage", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.bannerImage", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.workerBanner", "Tbl_WorkerBanner")
+                    b.HasOne("ShopPanel.Models.Domain.workerBanner", "Tbl_WorkerBanner")
                         .WithMany()
                         .HasForeignKey("banner_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Buy", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Buy", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("buyer_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.UserAddress", "Tbl_UserAddress")
+                    b.HasOne("ShopPanel.Models.Domain.UserAddress", "Tbl_UserAddress")
                         .WithMany()
                         .HasForeignKey("buyeradd_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Checkout", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Buycheck", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.sellerBank", "Tbl_sellerBank")
+                    b.HasOne("ShopPanel.Models.Domain.Buy", "Tbl_Buy")
+                        .WithMany()
+                        .HasForeignKey("buy_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Checkout", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.sellerBank", "Tbl_sellerBank")
                         .WithMany()
                         .HasForeignKey("bank_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Salsman", "Tbl_Salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.CheckoutRequest", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.CheckoutRequest", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.sellerBank", "Tbl_sellerbank")
+                    b.HasOne("ShopPanel.Models.Domain.sellerBank", "Tbl_sellerbank")
                         .WithMany()
                         .HasForeignKey("bank_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Salsman", "Tbl_Salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.City", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.City", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Ostan", "Tblostan")
+                    b.HasOne("ShopPanel.Models.Domain.Ostan", "Tblostan")
                         .WithMany()
                         .HasForeignKey("ostan_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Comment", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Comment", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Products")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Products")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ContactUs", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ContactUs", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.FollowShop", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.FollowShop", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Shop", "shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.UserApp", "TblUserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "TblUserApp")
                         .WithMany()
                         .HasForeignKey("userapp_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Order", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Order", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.orderDetail", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.orderDetail", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Order", "Tbl_Order")
+                    b.HasOne("ShopPanel.Models.Domain.Order", "Tbl_Order")
                         .WithMany()
                         .HasForeignKey("order_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.payment", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.payment", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Product", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProdProp", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "user")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
+                        .WithMany()
+                        .HasForeignKey("product_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Property", "Tbl_Property")
+                        .WithMany()
+                        .HasForeignKey("property_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Product", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "user")
                         .WithMany()
                         .HasForeignKey("User_id");
 
-                    b.HasOne("newsSite90tv.Models.ProductBrand", "brand")
+                    b.HasOne("ShopPanel.Models.Domain.ProductBrand", "brand")
                         .WithMany()
                         .HasForeignKey("brand_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("cat_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Salsman", "Tbl_Salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductColor", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductColor", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Color", "Tbl_color")
+                    b.HasOne("ShopPanel.Models.Domain.Color", "Tbl_color")
                         .WithMany()
                         .HasForeignKey("color_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductGallary", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductGallary", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Product", "product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductProperties", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductProperties", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Properties", "Tbl_Properties")
+                    b.HasOne("ShopPanel.Models.Domain.Properties", "Tbl_Properties")
                         .WithMany()
                         .HasForeignKey("properties_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.PropertiesValue", "Tbl_PropertiesValue")
+                    b.HasOne("ShopPanel.Models.Domain.PropertiesValue", "Tbl_PropertiesValue")
                         .WithMany()
                         .HasForeignKey("propertiesvalue_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ProductSize", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductSeller", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Size", "Tbl_Size")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
+                        .WithMany()
+                        .HasForeignKey("seller_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
+                        .WithMany()
+                        .HasForeignKey("shop_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ProductSize", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
+                        .WithMany()
+                        .HasForeignKey("product_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Size", "Tbl_Size")
                         .WithMany()
                         .HasForeignKey("size_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Properties", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Properties", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("category_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.PropertiesValue", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.PropertiesValue", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Properties", "Tbl_Properties")
+                    b.HasOne("ShopPanel.Models.Domain.Properties", "Tbl_Properties")
                         .WithMany()
                         .HasForeignKey("properties_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ReportProduct", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Property", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
+                        .WithMany()
+                        .HasForeignKey("cat_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Part", "Tbl_Part")
+                        .WithMany()
+                        .HasForeignKey("part_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.ReportProduct", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ReportReason", "Tbl_ReportReason")
+                    b.HasOne("ShopPanel.Models.Domain.ReportReason", "Tbl_ReportReason")
                         .WithMany()
                         .HasForeignKey("reason_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Salsman", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Salsman", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_Userapp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_Userapp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "user")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "user")
                         .WithMany()
                         .HasForeignKey("user_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Sell", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Sell", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Buy", "Tbl_Buy")
+                    b.HasOne("ShopPanel.Models.Domain.Buy", "Tbl_Buy")
                         .WithMany()
                         .HasForeignKey("buy_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Product", "Tbl_Product")
+                    b.HasOne("ShopPanel.Models.Domain.Product", "Tbl_Product")
                         .WithMany()
                         .HasForeignKey("product_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Salsman", "Tbl_Salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.sellerBank", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Sellcheck", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Salsman", "Tbl_Salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Sell", "Tbl_Sell")
+                        .WithMany()
+                        .HasForeignKey("sell_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.sellerBank", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "Tbl_Salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "Tbl_User")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "Tbl_User")
                         .WithMany()
                         .HasForeignKey("user_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Shop", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.Shop", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("cat_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.City", "Tblcity")
+                    b.HasOne("ShopPanel.Models.Domain.City", "Tblcity")
                         .WithMany()
                         .HasForeignKey("city_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Ostan", "Tblostan")
+                    b.HasOne("ShopPanel.Models.Domain.Ostan", "Tblostan")
                         .WithMany()
                         .HasForeignKey("ostan_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Salsman", "salsman")
+                    b.HasOne("ShopPanel.Models.Domain.Salsman", "salsman")
                         .WithMany()
                         .HasForeignKey("seller_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "user")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "user")
                         .WithMany()
                         .HasForeignKey("user_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.shopadvertise", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.shopadvertise", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Shop", "Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "User")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "User")
                         .WithMany()
                         .HasForeignKey("users_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.ShopPlanState", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.shopcomments", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Plan", "Tbl_Plan")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
-                        .HasForeignKey("plan_id")
+                        .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Shop", "Tbl_Shop")
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
                         .WithMany()
                         .HasForeignKey("shop_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.Size", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.ShopPlanState", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Plan", "Tbl_Plan")
+                        .WithMany()
+                        .HasForeignKey("plan_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShopPanel.Models.Domain.Shop", "Tbl_Shop")
+                        .WithMany()
+                        .HasForeignKey("shop_id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShopPanel.Models.Domain.Size", b =>
+                {
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("cat_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.SizeCategory", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.SizeCategory", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("cat_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Size", "Tbl_Size")
+                    b.HasOne("ShopPanel.Models.Domain.Size", "Tbl_Size")
                         .WithMany()
                         .HasForeignKey("size_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserAddress", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserAddress", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_Userapp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_Userapp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.City", "Tbl_city")
+                    b.HasOne("ShopPanel.Models.Domain.City", "Tbl_city")
                         .WithMany()
                         .HasForeignKey("city_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Ostan", "Tbl_ostan")
+                    b.HasOne("ShopPanel.Models.Domain.Ostan", "Tbl_ostan")
                         .WithMany()
                         .HasForeignKey("ostan_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserAlarm", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserAlarm", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_Userapp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_Userapp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.UserApp", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.UserApp", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.ApplicationUsers", "user")
+                    b.HasOne("ShopPanel.Models.Domain.ApplicationUsers", "user")
                         .WithMany()
                         .HasForeignKey("User_id");
                 });
 
-            modelBuilder.Entity("newsSite90tv.Models.workerBanner", b =>
+            modelBuilder.Entity("ShopPanel.Models.Domain.workerBanner", b =>
                 {
-                    b.HasOne("newsSite90tv.Models.UserApp", "Tbl_UserApp")
+                    b.HasOne("ShopPanel.Models.Domain.UserApp", "Tbl_UserApp")
                         .WithMany()
                         .HasForeignKey("appuser_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Category", "Tbl_Category")
+                    b.HasOne("ShopPanel.Models.Domain.Category", "Tbl_Category")
                         .WithMany()
                         .HasForeignKey("category_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.City", "Tbl_City")
+                    b.HasOne("ShopPanel.Models.Domain.City", "Tbl_City")
                         .WithMany()
                         .HasForeignKey("city_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("newsSite90tv.Models.Ostan", "Tbl_Ostan")
+                    b.HasOne("ShopPanel.Models.Domain.Ostan", "Tbl_Ostan")
                         .WithMany()
                         .HasForeignKey("ostan_id")
                         .OnDelete(DeleteBehavior.Cascade);

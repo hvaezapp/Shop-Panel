@@ -1,14 +1,14 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class userbuyRepository : Iuserbuy
     {
@@ -44,8 +44,7 @@ namespace newsSite90tv.Models.Repository
                         productname = _context.productRepositoryUW.GetById(a.Tbl_OrderDetail.product_id).title,
                         shopname = _context.shopRepositoryUW.GetById(a.Tbl_OrderDetail.shop_id).title,
                         buystate = a.buystate,
-
-                        buydate = a.createdatesh +" "+ DateAndTimeShamsi.MyTime(a.createdateml)
+                        buydate = (a.dateShamsi +"-"+ DateAndTimeShamsi.MyTime(a.dateMiladi))
 
                     });
 

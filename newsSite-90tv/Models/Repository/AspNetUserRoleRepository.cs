@@ -1,10 +1,11 @@
-﻿using newsSite90tv.Models.Services;
+﻿using ShopPanel.Models.Services;
+using ShopPanel.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class AspNetUserRoleRepository : IAspNetUserRoleRepository
     {

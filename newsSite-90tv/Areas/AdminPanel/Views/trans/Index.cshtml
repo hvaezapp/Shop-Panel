@@ -2,9 +2,9 @@
 
 
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.Models.UnitOfWork
 
 @inject IUnitOfWork _context
 
@@ -71,7 +71,7 @@
                             <td>ردیف</td>
                             <td>@Html.DisplayNameFor(m => m.appuser_id)</td>
                             <td>@Html.DisplayNameFor(m => m.amount)</td>
-                            <td>@Html.DisplayNameFor(m => m.dateshamsi)</td>
+                            <td>@Html.DisplayNameFor(m => m.dateShamsi)</td>
                             <td>عملیات</td>
                         </tr>
                     </thead>
@@ -97,7 +97,7 @@
 
 
                             <td>
-                                @item.dateshamsi
+                                @item.dateShamsi
                             </td>
 
                           

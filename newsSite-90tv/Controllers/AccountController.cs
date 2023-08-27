@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.ViewModels;
+using ShopPanel.Models.ViewModels;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Controllers
+
+namespace ShopPanel.Controllers
 {
     public class AccountController : Controller
     {

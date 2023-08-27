@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Services
+namespace ShopPanel.Services
 {
     public class UploadFile : IUploadfile
     {

@@ -9,15 +9,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.ViewModels;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.ViewModels;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
 using Newtonsoft.Json;
+using ShopPanel.Models;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     public class ProductController : Controller

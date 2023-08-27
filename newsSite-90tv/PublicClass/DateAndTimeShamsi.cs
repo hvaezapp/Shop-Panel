@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.PublicClass
+namespace ShopPanel.PublicClass
 {
     public class DateAndTimeShamsi
     {
 
-        public static string DateShamsi()
+        public static string dateShamsi()
         {
             var currentDate = DateTime.Now;
             PersianCalendar pcCalender = new PersianCalendar();

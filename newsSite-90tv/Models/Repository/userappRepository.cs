@@ -1,11 +1,12 @@
-﻿using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
+﻿using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class userappRepository : IUserapp
     {

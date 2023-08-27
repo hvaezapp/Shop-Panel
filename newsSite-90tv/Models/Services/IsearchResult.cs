@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Services
+namespace ShopPanel.Models.Services
 {
     public interface IsearchResult : IDisposable
     {

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Models.Services
+namespace ShopPanel.Models.Services
 {
     public interface IUserapp 
     {

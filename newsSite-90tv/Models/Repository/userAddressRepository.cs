@@ -1,14 +1,15 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class userAddressRepository : Iuseraddress
     {
@@ -44,8 +45,8 @@ namespace newsSite90tv.Models.Repository
                         mobile = model.mobile,
                         name = model.name,
                         phone = model.phone,
-                        dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
-                        datemiladi = DateTime.Now
+                        dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                        dateMiladi = DateTime.Now
                     };
 
                     _context.useraddRepositoryUW.Create(newadd);
@@ -86,7 +87,7 @@ namespace newsSite90tv.Models.Repository
 
                 if (user != null)
                 {
-                    api.address = _context.useraddRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id, a=>a.OrderByDescending(b=>b.datemiladi), "Tbl_ostan,Tbl_city").Select(a => new UserAddressListApiModel
+                    api.address = _context.useraddRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id, a=>a.OrderByDescending(b=>b.dateMiladi), "Tbl_ostan,Tbl_city").Select(a => new UserAddressListApiModel
                     {
                         address = a.address,
                         cityname = a.Tbl_city.title,

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 using ZarinpalSandbox;
 
-namespace newsSite90tv.Controllers
+namespace ShopPanel.Controllers
 {
-   
+
     public class paymentController : Controller
     {
 
@@ -52,8 +52,8 @@ namespace newsSite90tv.Controllers
                 //        amount = order.sumprice,
                 //        appuser_id = order.appuser_id,
                 //        comment = $"پرداخت فاکتور خرید محصول شماره {order.codeorder} ،پرداخت کننده:  {order.Tbl_UserApp.firstName + " " + order.Tbl_UserApp.lastName}",
-                //        datemiladi = DateTime.Now,
-                //        dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                //        dateMiladi = DateTime.Now,
+                //        dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                 //        desbank = "پیدا نشد",
                 //        sourceBank = "پیدا نشد",
                 //        isenable = true,
@@ -122,8 +122,8 @@ namespace newsSite90tv.Controllers
                     if (res.Status == 100)
                     {
                         order.isfinish = true;
-                        order.finishdatemiladi = DateTime.Now;
-                        order.finishdateshamsi = DateAndTimeShamsi.DateTimeShamsi();
+                        order.finishdateMiladi = DateTime.Now;
+                        order.finishdateShamsi = DateAndTimeShamsi.DateTimeShamsi();
 
                         _context.OrderRepositoryUW.Update(order);
                         await _context.saveAsync();
@@ -136,8 +136,8 @@ namespace newsSite90tv.Controllers
                         var newpayment = new payment
                         {
                             isenable = true,
-                            datemiladi = DateTime.Now,
-                            dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                            dateMiladi = DateTime.Now,
+                            dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                             amount = order.sumprice,
                             appuser_id = order.appuser_id,
                             comment = $"پرداخت فاکتور خرید محصول شماره {order.codeorder} ،پرداخت کننده:  {order.Tbl_UserApp.firstName + " " + order.Tbl_UserApp.lastName}",
@@ -167,8 +167,6 @@ namespace newsSite90tv.Controllers
                                 buyer_id = order.appuser_id,
                                 buystatus =  0 , // suspend
                                 color_id = item.color_id,
-                                createdateml = DateTime.Now,
-                                createdatesh = DateAndTimeShamsi.DateTimeShamsi(),
                                 isenable = true,
                                 posttype = order.posttype,
                                 price = item.price,
@@ -190,8 +188,6 @@ namespace newsSite90tv.Controllers
                                 seller_id = _context.shopRepositoryUW.GetById(item.shop_id).seller_id,
                                 totalsellprice = item.totalprice,
                                 sellstatus = 0, //suspend
-                                createdateml = DateTime.Now,
-                                createdatesh = DateAndTimeShamsi.DateTimeShamsi(),
                                 isenable = true,
                                 buy_id = buy.Id,
                                 price = item.price,

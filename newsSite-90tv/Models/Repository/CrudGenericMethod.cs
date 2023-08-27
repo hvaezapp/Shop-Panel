@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopPanel.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class CrudGenericMethod<Tentity> where Tentity : class 
     {

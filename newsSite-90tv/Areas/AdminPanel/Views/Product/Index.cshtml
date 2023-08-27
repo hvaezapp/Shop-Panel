@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Product>
 
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.Models.UnitOfWork
 
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
 @{
     ViewData["Title"] = "محصولات";
@@ -107,7 +107,12 @@
 
                            
                             <td>
-                                <img src="~/upload/products/thumbnailimage/@item.image" class="img-thumbnail profile-user-img" />
+                                @if (!string.IsNullOrEmpty(item.image))
+                                {
+                                    <img src="~/upload/products/thumbnailimage/@item.image" class="img-thumbnail profile-user-img" />
+                                }else{
+                                    <img src="~/upload/products/normalimage/nopicture.png" class="img-thumbnail profile-user-img" />
+                                }
 
                             </td>
 

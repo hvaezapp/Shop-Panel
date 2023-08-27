@@ -1,6 +1,6 @@
 using System;
 
-namespace newsSite90tv.Models
+namespace ShopPanel.Models
 {
     public class ErrorViewModel
     {

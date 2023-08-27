@@ -1,11 +1,12 @@
-﻿using newsSite90tv.Models.Repository;
-using newsSite90tv.Services;
+﻿using ShopPanel.Models.Repository;
+using ShopPanel.Services;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.UnitOfWork
+namespace ShopPanel.Models.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

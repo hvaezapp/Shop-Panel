@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Syncfusion.XlsIO;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.PublicClass;
+using ShopPanel.PublicClass;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Grid;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.Services;
 
-namespace newsSite90tv.Models.ExtraClass
+namespace ShopPanel.Models.ExtraClass
 {
     public class ExcelUtil : IExcelUtil
     {

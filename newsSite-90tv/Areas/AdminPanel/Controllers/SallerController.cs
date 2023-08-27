@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.Repository;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.Models.ViewModels;
-using newsSite90tv.PublicClass;
-using newsSite90tv.Services;
+using ShopPanel.Models.Repository;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.Models.ViewModels;
+using ShopPanel.PublicClass;
+using ShopPanel.Services;
 using Newtonsoft.Json;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
 
     [Area("AdminPanel")]
@@ -109,14 +109,14 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                     if (userphoneexist == null)
                     {
                         userApp.image = imagename;
-                        userApp.datemiladi = DateTime.Now;
-                        userApp.dateshamsi = DateAndTimeShamsi.DateTimeShamsi();
+                        userApp.dateMiladi = DateTime.Now;
+                        userApp.dateShamsi = DateAndTimeShamsi.DateTimeShamsi();
                         userApp.mobileActiveStatus = false;
                         userApp.token = "";
                         userApp.User_id = _userManager.GetUserId(User);
                         userApp.mobileActiveCode = "";
                         userApp.isEnable = true;
-                        userApp.type = 1;
+                        userApp.type = usertype.salsman.ToByte();
 
                         _context.userappRepositoryUW.Create(userApp);
                         await _context.saveAsync();
@@ -126,10 +126,9 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                         Salsman salsman = new Salsman
                         {
                             appuser_id = userApp.Id,
-                            dateMiladi = DateTime.Now,
-                            dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
+
                             isEnable = true,
-                            status = 1, // valid
+                            status = Status.suspend.ToByte(), // valid
                             user_id = _userManager.GetUserId(User)
                         };
 

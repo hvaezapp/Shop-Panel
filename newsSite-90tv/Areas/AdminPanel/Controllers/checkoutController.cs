@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
 
     [Area("AdminPanel")]
@@ -88,8 +88,8 @@ namespace newsSite90tv.Areas.AdminPanel.Controllers
                         {
                             bank_id = checkoutrequest.bank_id,
                             checkoutprice = checkoutrequest.requestprice,
-                            datemiladi = DateTime.Now,
-                            dateshamsi = DateAndTimeShamsi.DateTimeShamsi(),
+                            dateMiladi = DateTime.Now,
+                            dateShamsi = DateAndTimeShamsi.DateTimeShamsi(),
                             seller_id = checkoutrequest.seller_id,
                             shop_id = checkoutrequest.shop_id
                         };

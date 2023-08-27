@@ -1,10 +1,10 @@
 ﻿@model shopadvertise
 
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.Models.UnitOfWork
 
 @inject IUnitOfWork _context
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
 @{
     Layout = null;
@@ -59,8 +59,8 @@
         <div>
             
             <p>
-                <label asp-for="fromdateshamsi" class="control-label"></label> &nbsp; 
-                @Model.fromdateshamsi
+                <label asp-for="fromdateShamsi" class="control-label"></label> &nbsp; 
+                @Model.fromdateShamsi
             </p>
         </div>
         <hr />
@@ -68,8 +68,8 @@
         <div>
            
             <p>
-                <label asp-for="todateshamsi" class="control-label"></label> &nbsp; 
-                @Model.todateshamsi
+                <label asp-for="todateShamsi" class="control-label"></label> &nbsp; 
+                @Model.todateShamsi
             </p>
         </div>
 

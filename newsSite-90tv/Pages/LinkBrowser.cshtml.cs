@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace newsSite90tv.Pages
+namespace ShopPanel.Pages
 {
     public class LinkBrowserModel : PageModel
     {

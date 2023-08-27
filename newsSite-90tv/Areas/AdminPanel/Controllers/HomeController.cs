@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using newsSite90tv.Models.UnitOfWork;
+using ShopPanel.Models.UnitOfWork;
 using Syncfusion.XlsIO;
 using System.IO;
 using Syncfusion.Drawing;
 using Microsoft.AspNetCore.Authorization;
 
-namespace newsSite90tv.Areas.AdminPanel.Controllers
+namespace ShopPanel.Areas.AdminPanel.Controllers
 {
     [Area("AdminPanel")]
     [Authorize]

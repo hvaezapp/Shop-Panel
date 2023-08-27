@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using newsSite90tv.Models;
+using ShopPanel.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Services
+namespace ShopPanel.Services
 {
     public class EntityDataBaseTransaction : IEntityDataBaseTransaction
     {

@@ -1,11 +1,12 @@
-﻿using newsSite90tv.Models.apimodels;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static newsSite90tv.Models.Repository.ProductRepository;
+using static ShopPanel.Models.Repository.ProductRepository;
 
-namespace newsSite90tv.Models.apiobject
+namespace ShopPanel.Models.ApiObject
 {
     public class ProductDetailObject : AllApi
     {

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShopPanel.Models.Domain;
 
-namespace newsSite90tv.Models.apimodels
+namespace ShopPanel.Models.ApiModels
 {
     public class OstanApiModel : AllApi
     {

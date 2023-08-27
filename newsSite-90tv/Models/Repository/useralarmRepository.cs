@@ -1,14 +1,14 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.Services;
-using newsSite90tv.Models.UnitOfWork;
-using newsSite90tv.PublicClass;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.Services;
+using ShopPanel.Models.UnitOfWork;
+using ShopPanel.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class useralarmRepository : Iuseralarm
     {
@@ -36,7 +36,7 @@ namespace newsSite90tv.Models.Repository
 
                 if (user != null)
                 {
-                    api.userAlarms = _context.useralarmRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id, a => a.OrderByDescending(b => b.status == 0)).Skip(paresh).Take(10).Select(a=>new apimodels.UserAlarmApiModel
+                    api.userAlarms = _context.useralarmRepositoryUW.Get(a => a.isenable && a.appuser_id == user.Id, a => a.OrderByDescending(b => b.status == 0)).Skip(paresh).Take(10).Select(a=>new UserAlarmApiModel
                     {
                          body = a.body,
                          createdate = a.dateShamsi,

@@ -1,7 +1,7 @@
 ﻿using InsertShowImage;
 using Microsoft.AspNetCore.Hosting;
-using newsSite90tv.Models.Services;
-using newsSite90tv.PublicClass;
+using ShopPanel.Models.Services;
+using ShopPanel.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class saveImageRepository : IsaveImage
     {
@@ -36,7 +36,7 @@ namespace newsSite90tv.Models.Repository
                     }
                 }
 
-                return true;
+                return await Task.FromResult(true);
             }
             catch (Exception)
             {
@@ -197,7 +197,7 @@ namespace newsSite90tv.Models.Repository
                     File.Delete(thumpath);
                 }
 
-                return true;
+                return await Task.FromResult(true);
             }
             catch (Exception)
             {

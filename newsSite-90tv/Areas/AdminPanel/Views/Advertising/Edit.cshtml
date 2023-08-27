@@ -1,6 +1,6 @@
-﻿@model newsSite90tv.Models.ViewModels.AdvertizeCreateViewModel
+﻿@model ShopPanel.Models.ViewModels.AdvertizeCreateViewModel
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
 @{
 
@@ -49,8 +49,8 @@
             <input type="hidden" asp-for="adv.isenable" />
             <input type="hidden" asp-for="adv.image" />
             <input type="hidden" asp-for="adv.users_id" />
-            <input type="hidden" asp-for="adv.fromdatemiladi" />
-            <input type="hidden" asp-for="adv.todatemiladi" />
+            <input type="hidden" asp-for="adv.fromdateMiladi" />
+            <input type="hidden" asp-for="adv.todateMiladi" />
             <input type="hidden" asp-for="adv.Id" />
             <input type="hidden" asp-for="adv.appuser_id" />
          
@@ -63,34 +63,34 @@
 
             @* از تاريخ *@
             <div class="form-group">
-                <label asp-for="adv.fromdateshamsi" class="control-label"></label>
+                <label asp-for="adv.fromdateShamsi" class="control-label"></label>
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input asp-for="adv.fromdateshamsi" class="form-control circleInput"
+                    <input asp-for="adv.fromdateShamsi" class="form-control circleInput"
                            placeholder="تاريخ شروع نمايش تبليغ" id="FromDate"
                            data-MdDateTimePicker="true" data-trigger="click" data-targetselector="#FromDate" data-groupid="group1"
                            data-formdate="true" data-enabletimepicker="false" data-placement="bottom" />
                 </div>
-                <span asp-validation-for="adv.fromdateshamsi" class="text-danger"></span>
+                <span asp-validation-for="adv.fromdateShamsi" class="text-danger"></span>
             </div>
 
 
 
             @* تا تاريخ *@
             <div class="form-group">
-                <label asp-for="adv.todateshamsi" class="control-label"></label>
+                <label asp-for="adv.todateShamsi" class="control-label"></label>
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input asp-for="adv.todateshamsi" class="form-control circleInput"
+                    <input asp-for="adv.todateShamsi" class="form-control circleInput"
                            placeholder="تاريخ پايان نمايش تبليغ" id="ToDate"
                            data-MdDateTimePicker="true" data-trigger="click" data-targetselector="#ToDate" data-groupid="group1"
                            data-formdate="true" data-enabletimepicker="false" data-placement="bottom" />
                 </div>
-                <span asp-validation-for="adv.todateshamsi" class="text-danger"></span>
+                <span asp-validation-for="adv.todateShamsi" class="text-danger"></span>
             </div>
 
 

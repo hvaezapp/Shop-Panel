@@ -1,6 +1,6 @@
-﻿using newsSite90tv.PublicClass;
+﻿using ShopPanel.PublicClass;
 
-namespace newsSite90tv.PublicClass
+namespace ShopPanel.PublicClass
 {
     public class BootstrapModel
     {

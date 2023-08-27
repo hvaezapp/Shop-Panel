@@ -2,9 +2,9 @@
 
 
 
-@using newsSite90tv.PublicClass
+@using ShopPanel.PublicClass
 
-@using newsSite90tv.Models.UnitOfWork
+@using ShopPanel.Models.UnitOfWork
 
 @inject IUnitOfWork _context
 
@@ -83,7 +83,7 @@
                             <td>@Html.DisplayNameFor(model => model.price)</td>
                             <td>@Html.DisplayNameFor(model => model.totalsellprice)</td>
                             <td class="text-success">@Html.DisplayNameFor(model => model.totalprice)</td>
-                            <td>@Html.DisplayNameFor(model => model.createdatesh)</td>
+                            <td>@Html.DisplayNameFor(model => model.dateShamsi)</td>
                             <td>@Html.DisplayNameFor(model => model.sellstatus)</td>
                           
                             <td>عملیات</td>
@@ -145,7 +145,7 @@
                             </td>
 
                             <td>
-                                @item.createdatesh
+                                @item.dateShamsi
                             </td>
 
 

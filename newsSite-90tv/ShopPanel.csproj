@@ -19,13 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201128184124_mig1.cs" />
-    <Compile Remove="Migrations\20210106092954_mig17.cs" />
-    <Compile Remove="Migrations\20210114062034_mig19.cs" />
-    <Compile Remove="Migrations\20210114081336_mig21.cs" />
-    <Compile Remove="Migrations\20210114083448_mig22.cs" />
-    <Compile Remove="Migrations\20210217140219_mig36.cs" />
-    <Compile Remove="Migrations\20210217140219_mig36.Designer.cs" />
+    <Compile Remove="Migrations\20230719075003_m1.cs" />
+    <Compile Remove="Migrations\20230719075003_m1.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using newsSite90tv.Models.Services;
+using ShopPanel.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace newsSite90tv.Models.Repository
+namespace ShopPanel.Models.Repository
 {
     public class deleteimageRepository : Ideleteimage
     {
@@ -55,7 +55,7 @@ namespace newsSite90tv.Models.Repository
                 }
 
 
-                return true;
+                return await Task.FromResult(true);
 
                 
 

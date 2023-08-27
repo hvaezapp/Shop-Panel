@@ -1,13 +1,13 @@
-﻿using newsSite90tv.Models.apimodels;
-using newsSite90tv.Models.apiobject;
-using newsSite90tv.Models.UnitOfWork;
+﻿using ShopPanel.Models.ApiModels;
+using ShopPanel.Models.ApiObject;
+using ShopPanel.Models.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static newsSite90tv.Models.Repository.CategoryRepository;
+using static ShopPanel.Models.Repository.CategoryRepository;
 
-namespace newsSite90tv.Models.Services
+namespace ShopPanel.Models.Services
 {
     public interface ICategory
     {
